@@ -1,0 +1,52 @@
+---
+title: "Final_project"
+author: "Camila Cuadrado"
+date: "2025-04-10"
+output: html_document:
+        Pdf_document:
+        Md_document:
+          variant: gfm
+---
+
+Introduction:
+
+- Data obtained from sequencing samples of Newcastle Disease Virus (NDV) 
+
+Objective:
+
+Analyze genetic differences among isolates by comparing their sequences and identifying mutations
+
+Data Analysis:
+
+```{r}
+#Load of Libraries
+library(ggplot2)
+library(tidyr)
+library(ggpubr)
+library(ggrepel)
+```
+
+```{r}
+#Load Data
+
+matrix_data <- read.table("NDV results Matrix2.txt", skip = 15, header = TRUE, sep = "\t", check.names = FALSE, fill = TRUE) # Load the matrix without setting row names
+# Extract row labels from the first column and make them unique
+row_labels <- make.unique(as.character(matrix_data[, 1]))  # Make the first column unique
+matrix_data <- matrix_data[, -1]  # Remove the first column for numeric data
+
+# Assign unique column names using make.unique
+colnames(matrix_data) <- make.unique(colnames(matrix_data))
+rownames(matrix_data) <- row_labels  # Use unique row labels
+
+# Convert to matrix for visualization
+matrix_data <- as.matrix(matrix_data)
+```
+
+```{r}
+matrix_data
+```
+
+```{r}
+
+```
+
